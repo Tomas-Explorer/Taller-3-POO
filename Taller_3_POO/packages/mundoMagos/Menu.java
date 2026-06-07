@@ -1,17 +1,19 @@
 package mundoMagos;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu 
 {
+	private Sistema sistema;
+	private Scanner s = new Scanner(System.in);
 	
-	public static void elegirMenu() 
+	public void elegirMenu() 
 	{
 		boolean continuar = true;
-		Scanner s = new Scanner(System.in);
 		int input = 0;
 		
-		do 
+		while (continuar)
 		{
 			System.out.println("Elija el menú al que desea acceder:");
 			System.out.println("1. Menú Administrador.");
@@ -21,7 +23,8 @@ public class Menu
 			try 
 			{
 				input = s.nextInt();
-			
+				System.out.println();
+				s.nextLine();
 			} 
 			
 			catch (Exception e) 
@@ -36,27 +39,29 @@ public class Menu
 			{
 				case 1:
 					mostrarMenuAdministrador();
-					
+					break;
+				
 				case 2:
 					mostrarMenuAnalista();
+					break;
 				
 				case 3:
 					continuar = false;
-								
+					break;	
+					
 			}
-		} while (continuar);
+		}
 		
 	}
 	
-	public static void mostrarMenuAdministrador() 
+	public void mostrarMenuAdministrador() 
 	{
 		boolean continuar = true;
-		Scanner s = new Scanner(System.in);
 		int input = 0;
 		
+		System.out.println("Bienvenido al menú administrador");
 		do 
 		{
-			System.out.println("Bienvenido al menú administrador");
 			System.out.println("¿Qué acción desea realizar?");
 			System.out.println("1. Agregar Mago");
 			System.out.println("2. Modificar Mago");
@@ -65,13 +70,14 @@ public class Menu
 			System.out.println("5. Modificar Hechizo");
 			System.out.println("6. Eliminar Hechizo");
 			System.out.println("7. Regresar");
-			System.out.println("> ");
+			System.out.print("> ");
 
 			
 			try 
 			{
 				input = s.nextInt();
-			
+				s.nextLine();
+				System.out.println();
 			} 
 			
 			catch (Exception e) 
@@ -79,12 +85,59 @@ public class Menu
 				System.out.println("Opción inválida, intente nuevamente.");
 				System.out.println();
 				s.nextLine();
-				
 			}
 			
 			switch(input) 
 			{
 				case 1:
+					System.out.print("Nombre del nuevo mago: ");
+					String nombre = s.nextLine();
+					
+					boolean parar = false;
+					
+					ArrayList<Hechizo> listaTemporalHechizos = new ArrayList<>();
+						
+					do {
+						System.out.print("¿Que hechizo desea agregarle? ");
+						String hechizo = s.nextLine();
+							
+						if (sistema.buscarHechizo(hechizo) != null) 
+						{
+							listaTemporalHechizos.add(sistema.buscarHechizo(hechizo));
+							
+							System.out.println("¿Desea agregar otro hechizo? ");
+							System.out.println("1. Si");
+							System.out.println("2. No");
+								
+							int opcion = s.nextInt();
+							s.nextLine();
+							
+							switch(opcion)
+							{
+								case 1:
+									continue;
+									
+								case 2:
+									parar = true;
+									break;
+								default:
+									System.out.println("Opción inválida, ingrese nuevamente");
+									opcion = s.nextInt();
+									break;
+									
+							}
+						}
+						else 
+						{
+							System.out.println("Hechizo no encontrado, intente nuevamente.");
+							continue;
+						}
+							
+					} while (!parar);
+					
+					sistema.agregarMago(nombre, listaTemporalHechizos);
+					System.out.println(sistema.getListaMagos().size());
+					
 					
 				case 2:
 					
@@ -97,7 +150,7 @@ public class Menu
 				case 6:
 					
 				case 7:
-					elegirMenu();
+					continuar = false;
 					break;
 					
 			}
@@ -106,6 +159,9 @@ public class Menu
 	
 	public static void mostrarMenuAnalista() 
 	{
-		
+	}
+
+	public Menu(Sistema sistema) {
+		this.sistema = sistema;
 	}
 }

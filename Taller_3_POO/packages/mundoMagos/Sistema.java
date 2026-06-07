@@ -105,13 +105,19 @@ public class Sistema
 	{
 		for (Hechizo h: listaHechizos) 
 		{
-			if (nombreHechizo.equals(h.getNombreHechizo()))
+			if (nombreHechizo.equalsIgnoreCase(h.getNombreHechizo()))
 			{
 				return h;
 			}
 		}
 		
 		return null;
+	}
+	
+	public void agregarMago(String nombre, ArrayList hechizos) 
+	{
+		listaMagos.add(new Mago(nombre, hechizos));
+		
 	}
 
 	public ArrayList<Hechizo> getListaHechizos() {

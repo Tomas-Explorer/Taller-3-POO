@@ -10,12 +10,13 @@ public class App
 		// Rut: 22.368.978-7
 		// Carrera: I.T.I
 		Sistema sistema = new Sistema();
+		Menu menu = new Menu(sistema);
 		sistema.cargarHechizos();
 		sistema.cargarMagos();
 		
 		System.out.println(sistema.getListaHechizos().size());
 		System.out.println(sistema.getListaMagos().size());
 		
-		Menu.elegirMenu();
+		menu.elegirMenu();
 	}
 }
