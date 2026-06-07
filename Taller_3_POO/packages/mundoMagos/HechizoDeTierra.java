@@ -1,5 +1,17 @@
 package mundoMagos;
 
-public class HechizoDeTierra {
+public class HechizoDeTierra extends Hechizos
+{
+	private int mejoraDefensa;
 
+	public HechizoDeTierra(String nombreHechizo, String tipo, int daño, int mejoraDefensa) {
+		super(nombreHechizo, tipo, daño);
+		this.mejoraDefensa = mejoraDefensa;
+	}
+
+	public double calcularPuntaje() 
+	{
+		return (getDaño() * mejoraDefensa)/2;
+		
+	}
 }
