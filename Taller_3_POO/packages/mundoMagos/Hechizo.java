@@ -1,12 +1,12 @@
 package mundoMagos;
 
-public abstract class Hechizos implements Puntaje
+public abstract class Hechizo implements Puntaje
 {
 	private String nombreHechizo;
 	private String tipo;
 	private int daño;
 	
-	public Hechizos(String nombreHechizo, String tipo, int daño) {
+	public Hechizo(String nombreHechizo, String tipo, int daño) {
 		super();
 		this.nombreHechizo = nombreHechizo;
 		this.tipo = tipo;

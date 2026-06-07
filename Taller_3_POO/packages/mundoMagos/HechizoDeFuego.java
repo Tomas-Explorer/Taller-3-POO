@@ -1,6 +1,6 @@
 package mundoMagos;
 
-public class HechizoDeFuego extends Hechizos
+public class HechizoDeFuego extends Hechizo
 {
 	private int duracionQuemadura;
 

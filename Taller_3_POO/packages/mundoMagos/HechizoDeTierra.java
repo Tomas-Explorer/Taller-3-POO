@@ -1,6 +1,6 @@
 package mundoMagos;
 
-public class HechizoDeTierra extends Hechizos
+public class HechizoDeTierra extends Hechizo
 {
 	private int mejoraDefensa;
 

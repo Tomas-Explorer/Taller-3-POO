@@ -1,6 +1,6 @@
 package mundoMagos;
 
-public class HechizoDeAgua extends Hechizos
+public class HechizoDeAgua extends Hechizo
 {
 	private int cantidadHeal;
 	private int presionAgua;

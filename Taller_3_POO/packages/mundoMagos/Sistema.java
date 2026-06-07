@@ -8,7 +8,8 @@ public class Sistema
 {	
 	private static File magos = new File("Magos.txt");
 	private static File hechizos = new File("Hechizos.txt");
-	private ArrayList<Hechizos> listaHechizos = new ArrayList<>();
+	private ArrayList<Hechizo> listaHechizos = new ArrayList<>();
+	private ArrayList<Mago> listaMagos = new ArrayList<>();
 	
 	public void cargarMagos() 
 	{		
@@ -20,7 +21,21 @@ public class Sistema
 			{
 				String linea = m.nextLine();
 				
+				String[] partes = linea.split(";");
+				String nombre = partes[0];
+				String[] nombreHechizos = partes[1].split("|");
+				ArrayList<Hechizo> listaTemporalHechizos = new ArrayList<>();
 				
+				for (String nombreHechizo: nombreHechizos) 
+				{
+					if (buscarHechizo(nombreHechizo) != null) 
+					{
+						listaTemporalHechizos.add(buscarHechizo(nombreHechizo));
+						
+					}
+				}
+				
+				listaMagos.add(new Mago(nombre, listaTemporalHechizos));
 			}
 		} 
 		
@@ -85,4 +100,25 @@ public class Sistema
 			
 		}
 	}
+	
+	public Hechizo buscarHechizo(String nombreHechizo) 
+	{
+		for (Hechizo h: listaHechizos) 
+		{
+			if (nombreHechizo.equals(h.getNombreHechizo()))
+			{
+				return h;
+			}
+		}
+		
+		return null;
+	}
+
+	public ArrayList<Hechizo> getListaHechizos() {
+		return listaHechizos;
+	}
+
+	public ArrayList<Mago> getListaMagos() {
+		return listaMagos;
+	} 
 }
