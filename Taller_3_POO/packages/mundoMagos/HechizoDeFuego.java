@@ -18,4 +18,7 @@ public class HechizoDeFuego extends Hechizo
 		
 	}
 
+	public int getDuracionQuemadura() {
+		return duracionQuemadura;
+	}
 }

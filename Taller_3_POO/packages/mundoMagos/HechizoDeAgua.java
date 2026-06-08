@@ -16,5 +16,12 @@ public class HechizoDeAgua extends Hechizo
 		return (getDaño() + cantidadHeal + presionAgua) * 2;
 		 
 	}
-	
+
+	public int getCantidadHeal() {
+		return cantidadHeal;
+	}
+
+	public int getPresionAgua() {
+		return presionAgua;
+	}
 }

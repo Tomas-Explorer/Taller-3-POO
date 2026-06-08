@@ -18,4 +18,14 @@ public class HechizoDePlanta extends Hechizo
 		return getDaño() + (duracionStun + cantPlantas);
 		
 	}
+
+
+	public int getDuracionStun() {
+		return duracionStun;
+	}
+
+
+	public int getCantPlantas() {
+		return cantPlantas;
+	}
 }

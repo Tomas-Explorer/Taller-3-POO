@@ -14,4 +14,12 @@ public class HechizoDeTierra extends Hechizo
 		return (getDaño() * mejoraDefensa)/2;
 		
 	}
+
+	public int getMejoraDefensa() {
+		return mejoraDefensa;
+	}
+
+	public void setMejoraDefensa(int mejoraDefensa) {
+		this.mejoraDefensa = mejoraDefensa;
+	}
 }

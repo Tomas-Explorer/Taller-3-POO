@@ -14,9 +14,6 @@ public class App
 		sistema.cargarHechizos();
 		sistema.cargarMagos();
 		
-		System.out.println(sistema.getListaHechizos().size());
-		System.out.println(sistema.getListaMagos().size());
-		
 		menu.elegirMenu();
 	}
 }

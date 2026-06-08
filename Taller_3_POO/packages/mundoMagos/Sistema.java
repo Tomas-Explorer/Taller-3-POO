@@ -1,13 +1,15 @@
 package mundoMagos;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sistema 
 {	
-	private static File magos = new File("Magos.txt");
-	private static File hechizos = new File("Hechizos.txt");
+	private File magos = new File("Magos.txt");
+	private File hechizos = new File("Hechizos.txt");
 	private ArrayList<Hechizo> listaHechizos = new ArrayList<>();
 	private ArrayList<Mago> listaMagos = new ArrayList<>();
 	
@@ -23,7 +25,7 @@ public class Sistema
 				
 				String[] partes = linea.split(";");
 				String nombre = partes[0];
-				String[] nombreHechizos = partes[1].split("|");
+				String[] nombreHechizos = partes[1].split("\\|");
 				ArrayList<Hechizo> listaTemporalHechizos = new ArrayList<>();
 				
 				for (String nombreHechizo: nombreHechizos) 
@@ -114,12 +116,79 @@ public class Sistema
 		return null;
 	}
 	
+	public Mago buscarMago(String nombreMago) 
+	{
+	    for (Mago m : listaMagos) 
+	    {
+	        if (m.getNombre().equals(nombreMago)) 
+	        {
+	            return m;
+	        }
+	    }
+	    
+	    return null;
+	}
+	
 	public void agregarMago(String nombre, ArrayList hechizos) 
 	{
 		listaMagos.add(new Mago(nombre, hechizos));
-		
+		guardarMago();
 	}
 
+	public void guardarMago()
+	{
+		try
+		{
+			BufferedWriter bw = new BufferedWriter(new FileWriter(magos));
+			 
+			 for (Mago m: listaMagos) 
+			 {
+				 StringBuilder linea = new StringBuilder();
+				 linea.append(m.getNombre()).append(";");
+				 
+				 ArrayList<Hechizo> hechizos = m.getHechizos();
+				
+				 for (int i = 0; i < hechizos.size(); i++) 
+				 {
+					 linea.append(hechizos.get(i).getNombreHechizo());
+					 if (i < hechizos.size() - 1) 
+					 {
+						 linea.append("|");
+					 }
+					 
+				 }
+				 
+				 bw.write(linea.toString());
+				 bw.newLine();
+			 
+			 }
+			bw.close();
+		} catch (Exception e) 
+		{
+			System.out.println("Error guardando Magos.txt");
+			
+		}
+		
+	}
+	
+	public void mostrarHechizos() 
+	{
+	    for (Hechizo h : listaHechizos) 
+	    {
+	        System.out.println(h.getNombreHechizo() + " / " + h.getTipo());
+	    
+	    }
+	}
+
+	public void mostrarMagos() 
+	{
+	    for (Mago m : listaMagos) 
+	    {
+	        System.out.println(m.getNombre());
+	        
+	    }
+	}
+	
 	public ArrayList<Hechizo> getListaHechizos() {
 		return listaHechizos;
 	}
