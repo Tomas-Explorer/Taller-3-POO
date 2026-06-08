@@ -248,7 +248,7 @@ public class Menu
 		} while (continuar);
 	}
 	
-	public static void mostrarMenuAnalista() 
+	public void mostrarMenuAnalista() 
 	{
 		Scanner s = new Scanner(System.in);
 		boolean continuar = true;
@@ -263,7 +263,7 @@ public class Menu
 	        System.out.println("3. Mostrar todos los Hechizos");
 	        System.out.println("4. Mostrar todos los Magos");
 	        System.out.println("5. Mostrar todos los Hechizos con puntuación");
-	        System.out.println("6. Mostrar todos los Magos con puntuación");
+	        System.out.println("6. Mostrar todos los Magos junto a su puntuación");
 	        System.out.println("7. Regresar");
 	        System.out.print("> ");
 
@@ -287,15 +287,19 @@ public class Menu
 	                break;
 	            case 3:
 	                sistema.mostrarHechizos();
+	                System.out.println();
 	                break;
 	            case 4:
 	                sistema.mostrarMagos();
+	                System.out.println();
 	                break;
 	            case 5:
 	                sistema.mostrarHechizosConPuntaje();
+	                System.out.println();
 	                break;
 	            case 6:
-	                sistema.mostrarMagosConPuntaje();
+	                sistema.mostrarMagosJuntoPuntaje();
+	                System.out.println();
 	                break;
 	            case 7:
 	                continuar = false;
@@ -303,7 +307,7 @@ public class Menu
 	        }
 	    } while (continuar);
 	}
-	}
+	
 
 	public Menu(Sistema sistema) {
 		this.sistema = sistema;

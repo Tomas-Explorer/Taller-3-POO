@@ -189,6 +189,18 @@ public class Sistema
 	    }
 	}
 	
+	public void mostrarHechizosConPuntaje() {
+	    for (Hechizo h : listaHechizos) {
+	        System.out.println(h.getNombreHechizo() + " - Puntaje: " + h.calcularPuntaje());
+	    }
+	}
+
+	public void mostrarMagosJuntoPuntaje() {
+	    for (Mago m : listaMagos) {
+	        System.out.println(m.getNombre() + " - Puntaje: " + m.calcularPuntajeHechizos());
+	    }
+	}
+	
 	public ArrayList<Hechizo> getListaHechizos() {
 		return listaHechizos;
 	}

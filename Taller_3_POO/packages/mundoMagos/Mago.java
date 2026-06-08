@@ -25,4 +25,15 @@ public class Mago
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public double calcularPuntajeHechizos() {
+	    double total = 0;
+	    for (Hechizo h : hechizos) 
+	    {
+	        total += h.calcularPuntaje();
+	    
+	    }
+	    
+	    return total;
+	}
 }
